@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from 'react';    // importing React and useState Hook from react
+import './App.css';   // importing css styling
 
 function App() {
+
+  // useState hook variable creation
   const [num1, setNum1] = useState('');
   const [num2, setNum2] = useState('');
   const [error, setError] = useState('');
@@ -9,6 +11,7 @@ function App() {
   const [result, setResult] = useState('');
   const [result1, setResult1] = useState('');
 
+  // validation function to check if inputs are available or not
   const validateInputs = () => {
     setError('');
     setError1('');
@@ -16,6 +19,7 @@ function App() {
     setResult1('');
 
     if (!num1 || !num2 || isNaN(Number(num1)) || isNaN(Number(num2))) {
+      // setting error
       setError1(
         'Error'
       );
@@ -36,24 +40,33 @@ function App() {
     return true;
   };
 
+  // handling calculation operation if validation is true
   const handleOperation = (operator) => {
     if (!validateInputs()) {
       return;
     }
     let calculationResult;
+    // addition
     if (operator === '+') {
-      calculationResult = Number(num1) + Number(num2);
+      calculationResult = Number(num1) + Number(num2);  // typecasting to Number and performing arithmetic operation
     } 
+
+    // subtraction
     else if (operator === '-') {
-      calculationResult = Number(num1) - Number(num2);
+      calculationResult = Number(num1) - Number(num2);  // typecasting to Number and performing arithmetic operation
     } 
+
+    // multiplication
     else if (operator === '*') {
-      calculationResult = Number(num1) * Number(num2);
+      calculationResult = Number(num1) * Number(num2);  // typecasting to Number and performing arithmetic operation
     } 
+
+    // divison
     else if (operator === '/') {
-      calculationResult = Number(num1) / Number(num2);
+      calculationResult = Number(num1) / Number(num2);  // typecasting to Number and performing arithmetic operation
     }
 
+    // setting result
     setResult(`Success!`);
     setResult1(`Result - ${calculationResult}`);
     setError1(
@@ -64,6 +77,7 @@ function App() {
     );
   };
 
+  // returning JSX
   return (
     <div className="container">
       <div className="box">
@@ -116,4 +130,5 @@ function App() {
   );
 }
 
+/* Exporting the App function */
 export default App;
